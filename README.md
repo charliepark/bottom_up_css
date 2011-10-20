@@ -4,59 +4,55 @@
 
 Most CSS organizing schemas (note: we're only talking about how the CSS file is laid out, not the logic of the CSS) are structured such that the CSS selectors are organized left-to-right. That is, you might see something like this:
 
-<code><pre>
-  /* Base Styles */
-  a{}
+    /* Base Styles */
+    a{}
 
-  /* Articles */
-  div.article{}
-  div.article p{}
+    /* Articles */
+    div.article{}
+    div.article p{}
 
-  /* Comments */
-  div.comment{}
-  div.comment input{}
+    /* Comments */
+    div.comment{}
+    div.comment input{}
 
-  /* Sidebar */
-  div#sidebar{}
-  div#sidebar p{}
-  div#sidebar ul.local_navigation {}
-  div#sidebar ul.local_navigation a{}
-  div#sidebar ul.local_navigation a.current{}
+    /* Sidebar */
+    div#sidebar{}
+    div#sidebar p{}
+    div#sidebar ul.local_navigation {}
+    div#sidebar ul.local_navigation a{}
+    div#sidebar ul.local_navigation a.current{}
 
-  /* Footer */
-  div#footer{}
-  div#footer div.nav_primary a{}
-  div#footer div.nav_secondary a{}
-</pre></code>
+    /* Footer */
+    div#footer{}
+    div#footer div.nav_primary a{}
+    div#footer div.nav_secondary a{}
 
 And while I can see some of the logic in grouping site modules together like that, I've found in the past that *some* sites/projects benefit from a "bottom up" approach. Although this isn't *strictly* how browsers read CSS files (specificity's a little different), it's closer than most top-down approaches.
 
 So I'd group all of the link elements together, all of the inputs together, and so on. You'd get something more like this:
 
-<code><pre>
-  /* a */
-  a{}
-  div#footer div.nav_primary a{}
-  div#footer div.nav_secondary a{}
-  div#sidebar ul.local_navigation a{}
-  div#sidebar ul.local_navigation a.current{}
+    /* a */
+    a{}
+    div#footer div.nav_primary a{}
+    div#footer div.nav_secondary a{}
+    div#sidebar ul.local_navigation a{}
+    div#sidebar ul.local_navigation a.current{}
 
-  /* div */
-  div#sidebar{}
-  div#footer{}
-  div.article{}
-  div.comment{}
+    /* div */
+    div#sidebar{}
+    div#footer{}
+    div.article{}
+    div.comment{}
 
-  /* input */
-  div.comment input{}
+    /* input */
+    div.comment input{}
 
-  /* p */
-  div#sidebar p{}
-  div.article p{}
+    /* p */
+    div#sidebar p{}
+    div.article p{}
 
-  /* ul */
-  div#sidebar ul.local_navigation{}
-</pre></code>
+    /* ul */
+    div#sidebar ul.local_navigation{}
 
 I've found that organizing my CSS in this way makes it easier to scan up and down the CSS file to find the appropriate line to change. I'm experimenting with <a href="http://smacss.com">SMACSS</a> a bit, and I've played with OOCSS, but those deal, chiefly, with the logic of the code itself, not the formatting of the CSS file.
 
