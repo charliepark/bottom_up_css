@@ -4,7 +4,7 @@
 
 Most CSS organizing schemas (note: we're only talking about how the CSS file is laid out, not the logic of the CSS) are structured such that the CSS selectors are organized left-to-right. That is, you might see something like this:
 
-<code>
+<code><pre>
   /* Base Styles */
   a{}
 
@@ -27,13 +27,13 @@ Most CSS organizing schemas (note: we're only talking about how the CSS file is 
   div#footer{}
   div#footer div.nav_primary a{}
   div#footer div.nav_secondary a{}
-</code>
+<pre></code>
 
 And while I can see some of the logic in grouping site modules together like that, I've found in the past that *some* sites/projects benefit from a "bottom up" approach. Although this isn't *strictly* how browsers read CSS files (specificity's a little different), it's closer than most top-down approaches.
 
 So I'd group all of the link elements together, all of the inputs together, and so on. You'd get something more like this:
 
-<code>
+<code><pre>
   /* a */
   a{}
   div#footer div.nav_primary a{}
@@ -56,7 +56,7 @@ So I'd group all of the link elements together, all of the inputs together, and 
 
   /* ul */
   div#sidebar ul.local_navigation{}
-</code>
+</pre></code>
 
 I've found that organizing my CSS in this way makes it easier to scan up and down the CSS file to find the appropriate line to change. I'm experimenting with <a href="http://smacss.com">SMACSS</a> a bit, and I've played with OOCSS, but those deal, chiefly, with the logic of the code itself, not the formatting of the CSS file.
 
@@ -85,7 +85,7 @@ The script will output the new stylesheet to "parsed_&lt;your_css_file.css>".
 
 Alternately, you can enter the name of your CSS file on line 2 of parser.rb, and you'd only need to type in "ruby parser.rb" in the command line client.
 
-### Things to Watch Out For
+## Things to Watch Out For
 
 * The first line of the originating CSS file needs to be a normal line of CSS. If it's a blank line or a comment, the parser will get hung up.
 * The parser currently gets hung up on @media queries, so if you have any, be sure to add them to the output CSS file "parsed_&lt;whatever>.css" manually.
